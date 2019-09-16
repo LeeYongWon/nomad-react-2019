@@ -1,44 +1,44 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 const food = [
-  { korean: "kimchi" }, { america: "hamburger" }
-]
-//클래스형 component
-class Potato2 extends Component{
-  render(){
-    return(
-      <div>
-        <h2>{this.props.korean}</h2>
-        <h2>{this.props.america}</h2>
-      </div>
-    );
+  {
+    id:1,
+    name: "kimchi",
+    image: "https://search.naver.com/search.naver?where=image&sm=tab_jum&query=%EA%B9%80%EC%B9%98#.jpg"
+  },
+  {
+    id:2,
+    name: "hamburger",
+    image: "https://blog.naver.com/ddrddr220/220366357767.jpg"
+  },
+  {
+    id:3,
+    name: "불고기",
+    image: "https://image.shutterstock.com/image-photo/beautiful-orange-red-autumn-forest-600w-464920574.jpg"
   }
-}
+];
+
+
 //함수형 component
-function Potato({korean, america}) {
+function Food({name, image}) {
   return (
     <>
-      <h2>i like {korean}</h2>
-      <h2>i like {america}</h2>
+      <h1>i like {name}</h1>
+      <img src={image}></img>
     </>
   );
 }
-//arrow function Component
-const Potato3  = ({korean}) =>{
-  return(
-    <div>
-      <h2>Arrow Function Component</h2>
-      {korean}
-    </div>
-  );
+function renderFood(food){
+  console.log(food)
+  return <Food name={food.name} image={food.image} key={food.id}/>
 }
+
+
 function App() {
   return (
     <div className="App">
       <h2>hello</h2>
-      <Potato korean={food[0].korean} america={food[1].america} />
-      <Potato2 korean={food[0].korean} america={food[1].america} />
-      <Potato3 korean={food[0].korean} america={food[1].america} />
+      {food.map(renderFood)}
     </div>
   );
 }
