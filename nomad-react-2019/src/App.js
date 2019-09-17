@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+
 
 class App extends Component {
+  constructor(props){
+    super(props)
+    console.log('constructor')
+  }
   state = {
     count: 0
   }
@@ -31,7 +35,17 @@ class App extends Component {
       count:current.count * 0
     }))
   }
+  componentDidMount(){
+    console.log('componentDidMount render가 일어난 뒤에 일어난다.')
+  }
+  componentDidUpdate(){
+    console.log('componentDidUpdate state의 상태가 바뀌고 render가 실행되고 실행된다.');
+  }
+  componentWillUnmount(){
+    console.log('goodbye')
+  }
   render() {
+    console.log('render')
     return (
       <div>
         <h2>this number : {this.state.count} </h2>
