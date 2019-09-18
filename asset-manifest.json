@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/nomad-react-2019/static/css/main.b7cf6848.chunk.css",
+    "main.js": "/nomad-react-2019/static/js/main.56efc0b3.chunk.js",
+    "main.js.map": "/nomad-react-2019/static/js/main.56efc0b3.chunk.js.map",
+    "runtime~main.js": "/nomad-react-2019/static/js/runtime~main.2133b0a5.js",
+    "runtime~main.js.map": "/nomad-react-2019/static/js/runtime~main.2133b0a5.js.map",
+    "static/js/2.274a0753.chunk.js": "/nomad-react-2019/static/js/2.274a0753.chunk.js",
+    "static/js/2.274a0753.chunk.js.map": "/nomad-react-2019/static/js/2.274a0753.chunk.js.map",
+    "index.html": "/nomad-react-2019/index.html",
+    "precache-manifest.29009277be3035547adb3752d7106bb5.js": "/nomad-react-2019/precache-manifest.29009277be3035547adb3752d7106bb5.js",
+    "service-worker.js": "/nomad-react-2019/service-worker.js",
+    "static/css/main.b7cf6848.chunk.css.map": "/nomad-react-2019/static/css/main.b7cf6848.chunk.css.map"
+  }
+}
