@@ -1,64 +1,52 @@
 import React, { Component } from 'react';
-
-
+import axios from 'axios';
+//https://yts-proxy.now.sh/list_movies.json
 class App extends Component {
-  constructor(props){
-    super(props)
-    console.log('constructor')
-  }
   state = {
-    count: 0
+    isLoading: true,
+    movies: [],
   }
 
-  add = () => {
-    this.setState(current=>({
-      count: current.count + 1
-    }))
+
+
+  //영화 api 받아오는 함수
+  getMovies = async () => {
+    const { data: { data: { movies } } } = await axios.get('https://yts-proxy.now.sh/list_movies.json');
+    this.setState({
+      /*state의 movies*/  /*axios의 movies*/
+      movies: movies
+    })
+    console.log('api download complete')
+    console.log(movies);
+
   }
-  minus = () => {
-    this.setState(current =>({
-      count: this.state.count - 1
-    }))
+
+  //ComponentDidMount
+  componentDidMount() {
+    console.log('componentdidmount')
+    this.getMovies();
   }
-  ex = ()=>{
-    this.setState(current =>({
-      count: current.count *2
-    }))
-  }
-  divide = () =>{
-    this.setState(current=>({
-      count: current.count/2
-    }))
-  }
-  zero = () =>{
-    this.setState(current=>({
-      count:current.count * 0
-    }))
-  }
-  componentDidMount(){
-    console.log('componentDidMount render가 일어난 뒤에 일어난다.')
-  }
-  componentDidUpdate(){
-    console.log('componentDidUpdate state의 상태가 바뀌고 render가 실행되고 실행된다.');
-  }
-  componentWillUnmount(){
-    console.log('goodbye')
-  }
+
+  //render
   render() {
     console.log('render')
+    const { isLoading, movies } = this.state;
+    console.log(`render에 넘어온 ${movies}`);
     return (
-      <div>
-        <h2>this number : {this.state.count} </h2>
-        <button onClick={this.add}>plus</button>
-        <button onClick={this.minus}>minus</button>
-        <button onClick={this.ex}>*</button>
-        <button onClick={this.divide}>/</button>
-        <button onClick={this.zero}>초기값</button>
-      </div>
-    )
+      <>
+        <div>{isLoading ? 'Loading...wait' : 'We are ready'}</div>
+        <div>{movies.map((value, index)=>{
+          return (
+            <>
+          <h2 key={value.id}>{value.title}</h2>
+          <img src={value.medium_cover_image}></img>
+          <p>{value.summary}</p>
+            </>
+          );
+        })}</div>
+      </>
+    );
   }
 }
-
-
 
 export default App;
